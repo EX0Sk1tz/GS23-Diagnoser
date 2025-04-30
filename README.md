@@ -83,7 +83,8 @@ It performs over 20 detailed system checks, reports compatibility issues, and pr
 
 ## 📚 Screenshots
 
-> Add screenshots of the main UI, ticket manager, info cards, and export dialog for clarity.
+![GS23 Diagnoser 1](https://github.com/user-attachments/assets/ed13acb5-4abe-407d-b364-26d88d0161ef)
+![GS23 Diagnoser 2jpg](https://github.com/user-attachments/assets/6064f8e3-3cf2-4211-b198-1dd6157bfc31)
 
 ---
 

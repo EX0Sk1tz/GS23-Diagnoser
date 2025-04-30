@@ -8,6 +8,10 @@ using System.Text.Json;
 using System.IO;
 using System.Net.Http;
 using System.Windows.Input;
+using System;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GS23_Diagnoser
 {

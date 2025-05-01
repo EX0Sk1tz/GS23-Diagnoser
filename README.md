@@ -59,7 +59,7 @@ It performs over 20 detailed system checks, reports compatibility issues, and pr
 - Must be run as **Administrator**
 
 ### How to Launch
-1. Download and extract the latest `.zip` release.
+1. Download and extract the latest `.exe` release.
 2. Run `GS23_Diagnoser.exe` as administrator (admin privileges are required for registry, driver, and system-level checks).
 
 ---
@@ -67,7 +67,7 @@ It performs over 20 detailed system checks, reports compatibility issues, and pr
 ## 🚀 Usage
 
 1. Click `🔍 Run Full Diagnostic` on the first tab.
-2. Export or copy results to share or save.
+2. Copy results to share or save.
 3. Use the **Info & Help** tab to understand each check.
 4. Optionally send diagnostics directly to a **Discord channel** using a webhook.
 
@@ -83,7 +83,7 @@ It performs over 20 detailed system checks, reports compatibility issues, and pr
 
 ## 📚 Screenshots
 
-![GS23 Diagnoser 1](https://github.com/user-attachments/assets/ed13acb5-4abe-407d-b364-26d88d0161ef)
+![GS23 Diagnoser 1](https://github.com/user-attachments/assets/09c3864a-1da4-486e-b009-a1921e576076)
 ![GS23 Diagnoser 2jpg](https://github.com/user-attachments/assets/6064f8e3-3cf2-4211-b198-1dd6157bfc31)
 
 ---

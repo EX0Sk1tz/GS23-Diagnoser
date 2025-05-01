@@ -2,7 +2,7 @@
 
 <PropertyGroup>
   <OutputType>WinExe</OutputType>
-  <TargetFramework>net8.0-windows</TargetFramework>
+  <TargetFramework>net8.0-windows7.0</TargetFramework>
   <UseWPF>true</UseWPF>
 
   <PublishSingleFile>true</PublishSingleFile>
@@ -12,6 +12,17 @@
   <IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
   <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
   <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+  <SignAssembly>False</SignAssembly>
+  <UseWindowsForms>False</UseWindowsForms>
+  <StartupObject></StartupObject>
+</PropertyGroup>
+
+<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+  <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
+</PropertyGroup>
+
+<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+  <GenerateAssemblyInfo>True</GenerateAssemblyInfo>
 </PropertyGroup>
 
 
@@ -19,6 +30,7 @@
     <None Remove="assets\gs23_icon.ico" />
     <None Remove="assets\image.gif" />
   </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="System.Management" Version="9.0.4" />
@@ -28,6 +40,33 @@
     <Resource Include="assets\gs23_icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

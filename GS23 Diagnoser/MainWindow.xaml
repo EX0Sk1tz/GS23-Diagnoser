@@ -5,7 +5,7 @@
         Height="800" Width="970"
         MinHeight="800" MinWidth="970"
         Background="#1e1e1e"
-        Icon="pack://application:,,,/assets/gs23_icon.ico"
+        Icon="/assets/gs23_icon.ico"
         WindowStartupLocation="CenterScreen">
     <TabControl Background="#1e1e1e" Foreground="White">
         <!-- Diagnostics Tab -->
@@ -41,8 +41,9 @@
                                 <Button Grid.Column="0" Content="🔍 Run Full Diagnostic" Height="45" Margin="5" Click="CheckAll_Click"/>
                                 <Button Grid.Column="1" Content="🛡 Create Restore Point" Height="45" Margin="5" Click="CreateRestorePoint_Click"/>
                                 <Button Grid.Column="2" Content="📋 Copy to Clipboard" Height="45" Margin="5" Click="CopyToClipboard"/>
-                                <Button Grid.Column="3" Content="💾 Export as JSON" Height="45" Margin="5" Click="ExportToJson"/>
-                                <Button Grid.Column="4" Content="📨 Send to Discord" Height="45" Margin="5" Click="SendToDiscord"/>
+                                <Button Grid.Column="3" Content="📨 Send to Discord" Height="45" Margin="5" Click="SendToDiscord"/>
+                                <Button Grid.Column="4" Content="🔽 Fix-menu-text.exe" Height="45" Margin="5" Click="DownloadFixExe_Click" Cursor="Hand"/>
+
                             </Grid>
 
                             <!-- Status + Progress -->

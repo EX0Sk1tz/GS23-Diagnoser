@@ -746,23 +746,6 @@ namespace GS23_Diagnoser
             }
         }
 
-        private void ExportToJson(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                string json = JsonSerializer.Serialize(currentResult, new JsonSerializerOptions { WriteIndented = true });
-                string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"diagnostic_{DateTime.Now:yyyyMMdd_HHmmss}.json");
-                File.WriteAllText(path, json);
-
-                MessageBox.Show("Diagnostic exported to:\n" + path, "Export Successful", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Export failed:\n" + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-
         private void CopyToClipboard(object sender, RoutedEventArgs e)
         {
             var sb = new StringBuilder();
@@ -787,7 +770,6 @@ namespace GS23_Diagnoser
             MessageBox.Show("Copied to clipboard.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-
         private async void SendToDiscord(object sender, RoutedEventArgs e)
         {
             if (currentResult == null || currentResult.Checks.Count == 0)
@@ -798,7 +780,6 @@ namespace GS23_Diagnoser
 
             await SendDiscordWebhook(currentResult);
         }
-
 
         private async Task SendDiscordWebhook(DiagnosticResult result)
         {
@@ -851,16 +832,51 @@ namespace GS23_Diagnoser
 
                 if (response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("✅ Sent to Discord successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Sent to Discord successfully!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
-                    MessageBox.Show($"❌ Discord webhook failed:\n{response.StatusCode}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"Discord webhook failed:\n{response.StatusCode}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("❌ Failed to send to Discord:\n" + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Failed to send to Discord:\n" + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private async void DownloadFixExe_Click(object sender, RoutedEventArgs e)
+        {
+            string url = "https://github.com/EX0Sk1tz/GS23-Diagnoser/releases/download/v1.0%2B/Fix-garbled-menu-text.exe";
+            string savePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Fix-garbled-menu-text.exe");
+
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                using (HttpResponseMessage response = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead))
+                {
+                    response.EnsureSuccessStatusCode();
+
+                    using (var contentStream = await response.Content.ReadAsStreamAsync())
+                    using (var fileStream = new FileStream(savePath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
+                    {
+                        var buffer = new byte[8192];
+                        long totalRead = 0;
+                        int bytesRead;
+                        while ((bytesRead = await contentStream.ReadAsync(buffer, 0, buffer.Length)) != 0)
+                        {
+                            await fileStream.WriteAsync(buffer, 0, bytesRead);
+                            totalRead += bytesRead;
+
+                        }
+                    }
+
+                    MessageBox.Show("Fix-garbled-menu-text.exe has been saved to desktop.", "Download finished!", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error while downloading:\n" + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

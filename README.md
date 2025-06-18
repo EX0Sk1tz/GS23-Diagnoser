@@ -6,15 +6,6 @@ It performs over 20 detailed system checks, reports compatibility issues, and pr
 
 ---
 
-### 🚀 Features
-
-- Transformer-Symbolic Layer Fusion
-- Quantum Circuit Emulation (QCE)
-- Multi-agent introspection layers
-- Zero-trust isolation for inference chains
-
----
-
 ## 🔍 Features
 
 - ✅ **Operating System Compatibility Check**
